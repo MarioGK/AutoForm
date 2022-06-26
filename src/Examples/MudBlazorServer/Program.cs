@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components.Web;
 using MudBlazorServer.Data;
 using MudBlazor.Services;
 
+AutoForm.AutoFieldBuilders.Create(typeof(AutoForm.MudComponents.AutoTextField));
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

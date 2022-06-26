@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Components;
 
 namespace AutoForm;
 
-public abstract class AutoFormBase<T> : ComponentBase, IDisposable where T : class
+public abstract class AutoFormBase<T> : ComponentBase, IDisposable
 {
-    protected T Clone { get; private set; } = null!;
+    //protected T Clone { get; private set; } = null!;
     
     public bool Loading { get; set; }
     
     [Parameter]
     [EditorRequired]
-    public T Model { get; set; } = null!;
+    public T Model { get; set; } = default!;
     
     public AutoFields<T>? AutoFields { get; set; }
 
@@ -30,6 +30,6 @@ public abstract class AutoFormBase<T> : ComponentBase, IDisposable where T : cla
 
     public void Dispose()
     {
-        Model = Clone;
+        //Model = Clone;
     }
 }

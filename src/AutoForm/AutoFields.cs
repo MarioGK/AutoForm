@@ -5,14 +5,13 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace AutoForm;
 
-public class AutoFields<T> : ComponentBase where T : class
+public class AutoFields<T> : ComponentBase
 {
     [Parameter]
     [EditorRequired]
     public T? Model { get; set; }
 
     [Parameter]
-    [EditorRequired]
     public AutoFieldOptions? Options { get; set; } = new();
     
     //public bool EditMode => Model?.Id != null;
@@ -30,8 +29,8 @@ public class AutoFields<T> : ComponentBase where T : class
 
         var props = Model.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-            .Where(p => !p.GetIndexParameters().Any() && p.GetCustomAttribute<AutoOptions>() != null)
-            .OrderBy(x => x.GetCustomAttribute<AutoOptions>()?.Order ?? 5000)
+            .Where(p => !p.GetIndexParameters().Any() && p.GetCustomAttribute<FieldOptions>() != null)
+            .OrderBy(x => x.GetCustomAttribute<FieldOptions>()?.Order ?? 5000)
             .ToList();
 
         if (Options.OnlyFields != null && Options.OnlyFields.Any())
@@ -54,7 +53,7 @@ public class AutoFields<T> : ComponentBase where T : class
         
         //Ignore default fields
         
-        props = props.Where(x => x.GetCustomAttribute<AutoOptions>()!.Fields).ToList();
+        props = props.Where(x => x.GetCustomAttribute<FieldOptions>()!.Create).ToList();
 
         return props;
     }
@@ -70,7 +69,7 @@ public class AutoFields<T> : ComponentBase where T : class
             {
                 if (componentBuilder != null && Model != null)
                 {
-                    var options = propertyInfo.GetCustomAttribute<AutoOptions>();
+                    var options = propertyInfo.GetCustomAttribute<FieldOptions>();
                     var labelName = string.IsNullOrEmpty(options?.DisplayName) ? propertyInfo.Name.ToFriendlyCase() : options.DisplayName;
                     
                     var componentType = componentBuilder.GetType();
@@ -127,5 +126,28 @@ public class AutoFields<T> : ComponentBase where T : class
 
         var parameters = new[] {this, action};
         return genericMethod.Invoke(EventCallback.Factory, parameters);
+    }
+    
+    private Action<TEntity> MakeAction<TEntity>(PropertyInfo propertyInfo)
+    {
+        // your custom action here.
+        return value =>
+        {
+            try
+            {
+                if (propertyInfo.SetMethod is null)
+                {
+                    return;
+                }
+
+                propertyInfo.SetValue(Model, value);
+                //Console.WriteLine(value);
+            }
+            catch (Exception e)
+            {
+                //Log.Error(e, "Failed to set value to the model");
+                Console.WriteLine("Failed to set value to the model");
+            }
+        };
     }
 }
