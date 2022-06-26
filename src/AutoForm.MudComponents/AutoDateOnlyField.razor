@@ -1,0 +1,23 @@
+﻿@inherits AutoComponentBase<DateOnly>
+@implements IBuildableComponent
+
+<MudDatePicker Label="@LabelName" Date="DateTime" DateChanged="DateChange"/>
+
+@code
+{
+    public DateTime DateTime => Value.ToDateTime(new TimeOnly());
+
+    async Task DateChange(DateTime? dateTime)
+    {
+        if (dateTime == null)
+        {
+            return;
+        }
+
+        Value = DateOnly.FromDateTime(dateTime.Value);
+
+        await NotifyValueChanged();
+    }
+    
+    public int Priority => 4;
+}

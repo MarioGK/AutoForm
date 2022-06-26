@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoForm", "AutoForm\AutoForm.csproj", "{BCD57997-44E3-40A7-A8F6-913BADF7FE3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoForm.MudComponents", "AutoForm.MudComponents\AutoForm.MudComponents.csproj", "{6B2FB69D-1D84-4AC2-8291-B3132A95510C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E4332664-BAAB-48D3-B387-4A03DD307129}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazorServer", "Examples\MudBlazorServer\MudBlazorServer.csproj", "{14A4DEDD-AC81-4E56-8206-CB41601220F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazorClient", "Examples\MudBlazorClient\MudBlazorClient.csproj", "{10818DD9-A3E3-493C-9BA9-FD042DAD538D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCD57997-44E3-40A7-A8F6-913BADF7FE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD57997-44E3-40A7-A8F6-913BADF7FE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD57997-44E3-40A7-A8F6-913BADF7FE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD57997-44E3-40A7-A8F6-913BADF7FE3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2FB69D-1D84-4AC2-8291-B3132A95510C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2FB69D-1D84-4AC2-8291-B3132A95510C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2FB69D-1D84-4AC2-8291-B3132A95510C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2FB69D-1D84-4AC2-8291-B3132A95510C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A4DEDD-AC81-4E56-8206-CB41601220F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A4DEDD-AC81-4E56-8206-CB41601220F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A4DEDD-AC81-4E56-8206-CB41601220F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A4DEDD-AC81-4E56-8206-CB41601220F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10818DD9-A3E3-493C-9BA9-FD042DAD538D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10818DD9-A3E3-493C-9BA9-FD042DAD538D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10818DD9-A3E3-493C-9BA9-FD042DAD538D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10818DD9-A3E3-493C-9BA9-FD042DAD538D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14A4DEDD-AC81-4E56-8206-CB41601220F0} = {E4332664-BAAB-48D3-B387-4A03DD307129}
+		{10818DD9-A3E3-493C-9BA9-FD042DAD538D} = {E4332664-BAAB-48D3-B387-4A03DD307129}
+	EndGlobalSection
+EndGlobal

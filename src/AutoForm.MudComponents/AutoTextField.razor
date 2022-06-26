@@ -1,0 +1,9 @@
+﻿@inherits AutoComponentBase<string?>
+@implements IBuildableComponent
+
+<MudTextField Class="mb-1" Value="Value" ValueChanged="ValueChanged" Label="@LabelName" Variant="Variant.Text"/>
+
+@code
+{
+    public int Priority => 2;
+}

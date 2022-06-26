@@ -1,0 +1,17 @@
+﻿@inherits AutoComponentBase<decimal>
+@implements IBuildableComponent
+
+<MudNumericField 
+    T="decimal" 
+    Value="Value" 
+    Label="@LabelName" 
+    ValueChanged="ValueChanged" 
+    Adornment="Adornment.Start" 
+    AdornmentIcon="@Icons.Material.Filled.AttachMoney" 
+    AdornmentColor="Color.Warning"
+    Step="1"
+    HideSpinButtons="true"
+    Format="F2"/>
+    
+    @code
+    {public int Priority => 3;}

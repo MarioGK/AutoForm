@@ -1,0 +1,17 @@
+﻿@inherits AutoComponentBase<TimeSpan>
+@implements IBuildableComponent
+
+<MudTimePicker Label="@LabelName" Time="Value" TimeChanged="TimeChanged"/>
+
+@code
+{
+    public int Priority => 6;
+
+    private async Task TimeChanged(TimeSpan? timeSpan)
+    {
+        if (timeSpan != null)
+        {
+            await NotifyValueChanged(timeSpan.Value);
+        }
+    }
+}

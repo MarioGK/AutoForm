@@ -1,0 +1,14 @@
+﻿@inherits AutoComponentBase<bool>
+@implements IBuildableComponent
+
+<div class="d-flex align-center justify-space-between pt-1">
+    <MudText>
+        @LabelName
+    </MudText>
+    <MudSwitch Checked="Value" CheckedChanged="ValueChanged" Color="Color.Primary"/>
+</div>
+
+@code
+{
+    public int Priority => 5;
+}
