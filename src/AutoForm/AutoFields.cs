@@ -13,7 +13,7 @@ public class AutoFields<T> : ComponentBase
 
     [Parameter]
     public AutoFieldOptions? Options { get; set; } = new();
-    
+
     //public bool EditMode => Model?.Id != null;
 
     public string Name => Model?.GetType().Name.ToFriendlyCase() ?? "null";
@@ -28,17 +28,17 @@ public class AutoFields<T> : ComponentBase
         }
 
         var props = Model.GetType()
-            .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-            .Where(p => !p.GetIndexParameters().Any() && p.GetCustomAttribute<FieldOptions>() != null)
-            .OrderBy(x => x.GetCustomAttribute<FieldOptions>()?.Order ?? 5000)
-            .ToList();
+                         .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy)
+                         .Where(p => !p.GetIndexParameters().Any() && p.GetCustomAttribute<FieldOptions>() != null)
+                         .OrderBy(x => x.GetCustomAttribute<FieldOptions>()?.Order ?? 5000)
+                         .ToList();
 
         if (Options.OnlyFields != null && Options.OnlyFields.Any())
         {
             var fieldsToBuild = props
-                .Where(x => Options.OnlyFields.Contains(x.Name))
-                .OrderBy(x => Options.OnlyFields.IndexOf(x.Name))
-                .ToList();
+                               .Where(x => Options.OnlyFields.Contains(x.Name))
+                               .OrderBy(x => Options.OnlyFields.IndexOf(x.Name))
+                               .ToList();
 
             return fieldsToBuild;
         }
@@ -46,13 +46,15 @@ public class AutoFields<T> : ComponentBase
         if (Options.OnlySortFields != null && Options.OnlySortFields.Any())
         {
             return props
-                .OrderBy(x =>
-                    Options.OnlySortFields.IndexOf(x.Name) == -1 ? props.Count : Options.OnlySortFields.IndexOf(x.Name))
-                .ToList();
+                  .OrderBy(x =>
+                               Options.OnlySortFields.IndexOf(x.Name) == -1
+                                   ? props.Count
+                                   : Options.OnlySortFields.IndexOf(x.Name))
+                  .ToList();
         }
-        
+
         //Ignore default fields
-        
+
         props = props.Where(x => x.GetCustomAttribute<FieldOptions>()!.Create).ToList();
 
         return props;
@@ -70,17 +72,19 @@ public class AutoFields<T> : ComponentBase
                 if (componentBuilder != null && Model != null)
                 {
                     var options = propertyInfo.GetCustomAttribute<FieldOptions>();
-                    var labelName = string.IsNullOrEmpty(options?.DisplayName) ? propertyInfo.Name.ToFriendlyCase() : options.DisplayName;
-                    
+                    var labelName = string.IsNullOrEmpty(options?.DisplayName)
+                                        ? propertyInfo.Name.ToFriendlyCase()
+                                        : options.DisplayName;
+
                     var componentType = componentBuilder.GetType();
                     builder.OpenComponent(0, componentType);
                     try
                     {
                         var propertyValue = propertyInfo.GetValue(Model);
-                        builder.AddAttribute(1, "LabelName", labelName);
-                        builder.AddAttribute(2, "Value", propertyValue);
+                        builder.AddAttribute(1, "LabelName",    labelName);
+                        builder.AddAttribute(2, "Value",        propertyValue);
                         builder.AddAttribute(3, "ValueChanged", CreateGenericValueChanged(propertyInfo, Model));
-                        builder.AddAttribute(4, "TypeName", propertyInfo.PropertyType.Name);
+                        builder.AddAttribute(4, "TypeName",     propertyInfo.PropertyType.Name);
                     }
                     catch (Exception e)
                     {
@@ -106,7 +110,7 @@ public class AutoFields<T> : ComponentBase
     {
         //TODO make this better
         var methods = EventCallback.Factory.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance)
-            .Where(m => m.Name == nameof(EventCallback.Factory.Create)).ToList();
+                                   .Where(m => m.Name == nameof(EventCallback.Factory.Create)).ToList();
         var method = methods[8];
 
         var type = propertyInfo.PropertyType;
@@ -127,7 +131,7 @@ public class AutoFields<T> : ComponentBase
         var parameters = new[] {this, action};
         return genericMethod.Invoke(EventCallback.Factory, parameters);
     }
-    
+
     private Action<TEntity> MakeAction<TEntity>(PropertyInfo propertyInfo)
     {
         // your custom action here.

@@ -4,6 +4,11 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Title>Blazor Autoform</Title>
+        <Description>Making creation of forms easier in Blazor</Description>
+        <PackageProjectUrl>https://github.com/MarioGK/AutoForm</PackageProjectUrl>
+        <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/MarioGK/AutoForm</RepositoryUrl>
     </PropertyGroup>
 
 

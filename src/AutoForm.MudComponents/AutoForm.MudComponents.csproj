@@ -5,6 +5,11 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <AssemblyName>AutoForm.MudComponents</AssemblyName>
         <RootNamespace>AutoForm.MudComponents</RootNamespace>
+        <Title>AutoForm MudBlazor Components</Title>
+        <Description>https://github.com/MarioGK/AutoForm/blob/main/LICENSE</Description>
+        <PackageProjectUrl>https://github.com/MarioGK/AutoForm</PackageProjectUrl>
+        <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/MarioGK/AutoForm</RepositoryUrl>
     </PropertyGroup>
     
     <ItemGroup>

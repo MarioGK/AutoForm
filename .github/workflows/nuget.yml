@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  create: # when tags are created
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  nuget:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Install dotnet
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore src
+    - name: Build Project
+      run: dotnet build -c Release --no-restore src
+    - name: Build Packages
+      run: dotnet pack -c Release --no-restore --no-build -o output src
+    - name: List Packages
+      run: ls -l output
+    - name: Publish to nuget.org
+      run: dotnet nuget push ./output/*.nupkg -s https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_KEY}} --skip-duplicate

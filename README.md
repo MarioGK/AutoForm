@@ -4,7 +4,15 @@ This is a library to make automated forms in Blazor, it is under heavy developme
 
 ## Nuget Package
 
-WIP
+**AutoForm**:
+
+[![NuGet stable version](https://badgen.net/nuget/v/AutoForm)](https://nuget.org/packages/AutoForm)
+[![NuGet pre version](https://badgen.net/nuget/v/AutoForm/pre)](https://nuget.org/packages/AutoForm)
+
+**AutoForm.MudComponents**:
+
+[![NuGet stable version](https://badgen.net/nuget/v/AutoForm.MudComponents)](https://nuget.org/packages/AutoForm.MudComponents)
+[![NuGet pre version](https://badgen.net/nuget/v/AutoForm.MudComponents/pre)](https://nuget.org/packages/AutoForm.MudComponents)
 
 ## Features
 - Custom form fields
@@ -15,17 +23,23 @@ WIP
 
 ## To-Do
 - Add support for data validation from attributes
+- Make custom field example
+- Document AutoForm.AutoFieldBuilders.Create(ExtraLib); and make examples
 
 
 ## Getting Started
 
 Add using AutoForm to _Imports.razor
 
-```@using AutoForm```
+```csharp
+@using AutoForm
+```
 
 Just add this line to your Program.cs
 
-```AutoForm.AutoFieldBuilders.Create();```
+```csharp
+AutoForm.AutoFieldBuilders.Create();
+```
 
 Like this:
 
@@ -82,10 +96,9 @@ Blazor Component example:
 
 And we get a nice form!
 
-![alt text](./images/example1.png "Title")
+![alt text](./images/example1.png "Example1")
 
-
-## More Examples
+## Examples
 
 - Bootstrap WASM WIP
 - Bootstrap Server WIP

@@ -9,13 +9,19 @@ public class FieldOptions : Attribute
         Order       = 500;
     }
 
+    public FieldOptions(int order)
+    {
+        Create = true;
+        Order  = order;
+    }
+    
     public FieldOptions(string name, int order = 0)
     {
         Create      = true;
         DisplayName = name;
         Order       = order;
     }
-    
+
     public FieldOptions(string name, string customType, int order = 0)
     {
         Create      = true;
@@ -23,12 +29,11 @@ public class FieldOptions : Attribute
         Order       = order;
         CustomType  = customType;
     }
-    
+
     public FieldOptions(bool show)
     {
-        Create      = show;
-        DisplayName = "";
-        Order       = 500;
+        Create = show;
+        Order  = 500;
     }
 
     public FieldOptions(bool create, string displayName = "", int order = 500)
@@ -36,11 +41,11 @@ public class FieldOptions : Attribute
         Create      = create;
         DisplayName = displayName;
         Order       = order;
-    }   
+    }
 
-    public string DisplayName { get; }
-    public int Order { get; }
-    public bool Create { get; }
+    public string? DisplayName { get; }
+    public int     Order       { get; }
+    public bool    Create      { get; }
 
     public string? CustomType { get; set; }
 }

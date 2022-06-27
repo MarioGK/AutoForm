@@ -7,13 +7,13 @@ public abstract class AutoComponentBase<TValue> : ComponentBase
 {
     [Parameter]
     public string? LabelName { get; set; }
-    
+
     [Parameter]
-    public string TypeName { get; set; }
+    public string? TypeName { get; set; }
 
     [Parameter]
     [EditorRequired]
-    public TValue? Value {  get;set;}
+    public TValue? Value { get; set; }
 
     [Parameter]
     public EventCallback<TValue> ValueChanged { get; set; }
@@ -31,16 +31,16 @@ public abstract class AutoComponentBase<TValue> : ComponentBase
             Console.WriteLine($"{propertyInfo.Name} is a base type of {typeof(TValue).Name}");
             result = true;
         }
-        
+
         return result;
     }
-    
+
     public async Task NotifyValueChanged()
     {
         await ValueChanged.InvokeAsync(Value);
         StateHasChanged();
     }
-    
+
     public async Task NotifyValueChanged(TValue value)
     {
         Value = value;
