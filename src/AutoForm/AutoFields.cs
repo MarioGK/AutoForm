@@ -29,7 +29,7 @@ public class AutoFields<T> : ComponentBase
 
         var props = Model.GetType()
                          .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-                         .Where(p => !p.GetIndexParameters().Any() && p.GetCustomAttribute<FieldOptions>() != null)
+                         .Where(p => !p.GetIndexParameters().Any())
                          .OrderBy(x => x.GetCustomAttribute<FieldOptions>()?.Order ?? 5000)
                          .ToList();
 
@@ -55,7 +55,7 @@ public class AutoFields<T> : ComponentBase
 
         //Ignore default fields
 
-        props = props.Where(x => x.GetCustomAttribute<FieldOptions>()!.Create).ToList();
+        props = props.Where(x => x.GetCustomAttribute<FieldOptions>()?.Create ?? true).ToList();
 
         return props;
     }

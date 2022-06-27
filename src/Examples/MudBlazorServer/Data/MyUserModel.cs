@@ -19,6 +19,5 @@ public class MyUserModel
     [FieldOptions(false)]
     public string WeDontWantThisOne { get; set; } = null!;
     
-    [FieldOptions("Admin", 4)]
     public bool Admin { get; set; } = false;
 }

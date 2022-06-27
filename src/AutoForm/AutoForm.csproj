@@ -9,6 +9,7 @@
         <PackageProjectUrl>https://github.com/MarioGK/AutoForm</PackageProjectUrl>
         <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/MarioGK/AutoForm</RepositoryUrl>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
 
