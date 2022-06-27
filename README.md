@@ -1,6 +1,8 @@
 # AutoForm
 
-This is a library to make automated forms in Blazor, it is under heavy development and is not ready for production.
+This is a library to make automated forms in Blazor.
+
+⚠️**Warning**: It is under heavy development, and is not yet ready for use.⚠️
 
 ## Nuget Package
 
