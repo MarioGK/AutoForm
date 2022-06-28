@@ -105,3 +105,7 @@ And we get a nice form!
 - Bootstrap Server WIP
 - [MudBlazor WASM WIP](https://github.com/MarioGK/AutoForm/tree/main/src/Examples/MudBlazorServer)
 - [MudBlazor Server](https://github.com/MarioGK/AutoForm/tree/main/src/Examples/MudBlazorServer)
+
+## Credits
+
+This package was inspired by [OpenMu](https://github.com/MUnique/OpenMU)'s AdminPanel made by [sven-n](https://github.com/sven-n).
